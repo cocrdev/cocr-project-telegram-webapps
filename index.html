@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Telegram WebApp for Bots</title>
+    <title>Новая задача</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
+            padding: 0 20px;
         }
 
         form, h1 {
             margin: 0 auto;
-            width: 300px;
+            max-width: 300px;
+            width: 100%;
         }
 
         label {
@@ -22,6 +25,7 @@
             width: 100%;
             padding: 10px;
             margin-top: 5px;
+            box-sizing: border-box;
         }
 
         input[type="submit"] {
@@ -31,6 +35,13 @@
             color: white;
             border: none;
             cursor: pointer;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                padding: 0;
+            }
         }
     </style>
 </head>
