@@ -30,7 +30,7 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"] {
+        input[type="submit"], button {
             margin-top: 20px;
             padding: 10px 20px;
             background: var(--tg-theme-button-color);
@@ -38,6 +38,10 @@
             border: none;
             cursor: pointer;
             width: 100%;
+        }
+
+        button {
+            background-color: #ec3939;
         }
 
         @media (min-width: 600px) {
@@ -50,26 +54,29 @@
 <body>
     <h1>Новая задача</h1>
     <form id="telegramForm" onsubmit="submitForm(event)">
-        <label for="title">Заголовок:</label><br>
-        <input type="text" id="title" name="title"><br>
+        <label for="taskname">Заголовок:</label><br>
+        <input type="text" id="taskname" name="taskname"><br>
         <label for="description">Описание:</label><br>
         <textarea id="description" name="description"></textarea><br>
         <input type="submit" value="Создать">
+        <button onclick="Telegram.WebApp.close()">Отменить</button>
     </form>
 
     <script>
         function submitForm(event) {
+            let tg = Telegram.WebApp;
             event.preventDefault();
 
-            var title = document.getElementById('title').value;
+            var taskname = document.getElementById('taskname').value;
             var description = document.getElementById('description').value;
 
             var data = {
-                title: title,
+                taskname: taskname,
                 description: description
             };
 
-            Telegram.WebApp.sendData(JSON.stringify(data));
+            tg.sendData(JSON.stringify(data));
+            tg.close();
         }
     </script>
 </body>
